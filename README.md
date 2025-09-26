@@ -1,16 +1,38 @@
-# find
+## Aplicación Find
 
-A new Flutter project.
+### Descripción General
+Find es una aplicación móvil desarrollada en Flutter que permite a los usuarios descubrir locales de discotecas o bares por zonas geográficas. La aplicación incluye funcionalidades tanto para clientes como para administradores.
 
-## Getting Started
+### Características Principales
 
-This project is a starting point for a Flutter application.
+#### Para Usuarios
+- **Exploración por zonas**: Los usuarios pueden navegar por diferentes zonas y descubrir locales
+- **Búsqueda**: Sistema de búsqueda integrado para encontrar zonas específicas
+- **Detalles de locales**: Visualización detallada de información de cada local
 
-A few resources to get you started if this is your first Flutter project:
+#### Para Administradores
+- **Gestión de zonas**: Los administradores pueden agregar, editar y eliminar zonas
+- **Panel de cliente**: Gestión de información de locales con imágenes y redes sociales
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Permisos Requeridos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### iOS
+- **Cámara**: Para subir imágenes de locales
+- **Galería**: Para seleccionar imágenes existentes
+- **Ubicación**: Para mostrar locales cercanos
+
+### Tecnologías Utilizadas
+- **Flutter**: Framework principal de desarrollo
+- **Firebase Data Connect**: Para la gestión de datos
+- **Google Sign-In**: Sistema de autenticación
+
+### Configuración de Desarrollo
+
+#### Firebase Data Connect
+La aplicación utiliza Firebase Data Connect con un conector por defecto. Para desarrollo local, se puede conectar al emulador usando el puerto 9399.
+
+### Instalación
+1. Clonar el repositorio
+2. Ejecutar `flutter pub get`
+3. Configurar Firebase según la documentación
+4. Ejecutar la aplicación con `flutter run`
