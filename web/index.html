@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="find">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <!-- Título y meta tags -->
+  <title>Fin-D</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Google Sign-In Client ID - CRÍTICO para web -->
+  <meta name="google-signin-client_id" content="358037456438-5bmamtjj87um9o2ea1ckso7ong5mrfpv.apps.googleusercontent.com">
+
+  <!-- Meta tags adicionales para Google Sign-In -->
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-cookiepolicy" content="single_host_origin">
+
+  <style>
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #4A148C;
+    }
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #ffffff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+<!-- Loading indicator -->
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+</div>
+
+<!-- IMPORTANTE: Google Sign-In debe cargarse ANTES que Firebase -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<!-- Firebase Scripts en orden específico -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage-compat.js"></script>
+
+<script>
+  // Firebase Configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC3pEheoAe5s0_1OBac3pJqx7bBp6lINGY",
+    authDomain: "find-ede09.firebaseapp.com",
+    projectId: "find-ede09",
+    storageBucket: "find-ede09.firebasestorage.app",
+    messagingSenderId: "358037456438",
+    appId: "1:358037456438:web:525d347490ca41245f3a97",
+    measurementId: "G-NGJ0FM4EPS"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Configuración adicional para Google Sign-In en web
+  window.addEventListener('load', function() {
+    // Asegurar que Google Sign-In esté disponible
+    if (typeof gapi !== 'undefined') {
+      gapi.load('auth2', function() {
+        gapi.auth2.init({
+          client_id: '358037456438-5bmamtjj87um9o2ea1ckso7ong5mrfpv.apps.googleusercontent.com'
+        });
+      });
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('load', function(ev) {
+    _flutter.loader.load({
+      onEntrypointLoaded: function(engineInitializer) {
+        engineInitializer.initializeEngine().then(function(appRunner) {
+          document.getElementById('loading').style.display = 'none';
+          return appRunner.runApp();
+        });
+      }
+    });
+  });
+</script>
+<script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
